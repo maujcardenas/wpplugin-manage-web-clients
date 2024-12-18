@@ -25,20 +25,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_client'])) {
     if ($is_edit) {
         $client_id = intval($_GET['id']);
         $result = $clients_model->update($client_id, $client_data);
-        $message = 'Client updated successfully.';
+        if ($result) {
+            $message = 'Client updated successfully.';
+            $client = $clients_model->get($client_id); // Refresh client data
+        } else {
+            $message = 'Error updating client.';
+        }
     } else {
         $result = $clients_model->create($client_data);
         if ($result) {
-            // Redirect before any output
-            wp_safe_redirect(admin_url('admin.php?page=tswp-manage-web-clients-clients&message=created'));
+            wp_redirect(admin_url('admin.php?page=tswp-manage-web-clients-clients&message=created'));
             exit;
+        } else {
+            $message = 'Error creating client.';
         }
-    }
-
-    if ($result && $is_edit) {
-        $message = 'Client updated successfully.';
-    } else if (!$result) {
-        $message = 'Error saving client.';
     }
 }
 
@@ -50,7 +50,7 @@ if ($is_edit && isset($_GET['id'])) {
     }
 }
 
-// Display success message if redirected after creation
+// Show message if redirected after creation
 if (isset($_GET['message']) && $_GET['message'] === 'created') {
     $message = 'Client created successfully.';
 }
