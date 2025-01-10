@@ -4,8 +4,8 @@
  * Plugin URI: 
  * Description: A WordPress plugin to manage web development agency clients, their domains, applications, emails, and payments.
  * Version: 1.0.0
- * Author: 
- * Author URI: 
+ * Author: Mauricio Cárdenas
+ * Author URI: https://mauriciojc.com
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: tswp-manage-web-clients

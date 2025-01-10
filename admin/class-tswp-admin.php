@@ -53,7 +53,7 @@ class TSWP_Admin {
             'Client Manager',
             'manage_options',
             $this->plugin_name,
-            array($this, 'display_plugin_dashboard_page'),
+            array($this, 'display_clients_page'),
             'dashicons-groups',
             30
         );
@@ -65,7 +65,7 @@ class TSWP_Admin {
             'Dashboard',
             'manage_options',
             $this->plugin_name,
-            array($this, 'display_plugin_dashboard_page')
+            array($this, 'display_clients_page')
         );
 
         add_submenu_page(
@@ -135,9 +135,10 @@ class TSWP_Admin {
     /**
      * Display pages
      */
-    public function display_plugin_dashboard_page() {
-        include_once 'partials/dashboard.php';
-    }
+
+    // public function display_plugin_dashboard_page() {
+    //     include_once 'partials/dashboard.php';
+    // }
 
     public function display_clients_page() {
         $action = isset($_GET['action']) ? $_GET['action'] : 'list';
